@@ -9,7 +9,11 @@ import { PrimeNgModule } from './modules/prime-ng/prime-ng/prime-ng.module';
 import { SharedModule } from './modules/shared/shared/shared.module';
 import { AuthService } from './services/auth/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
+import { HttpClientModule, HttpClient, provideHttpClient, withFetch, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InterceptService } from './services/intercept/intercept.service';
+import { LoaderService } from './services/loader/loader.service';
+import { SharedService } from './services/shared/shared.service';
+import { SpinnerService } from './services/spinner/spinner.service';
 
 @NgModule({
   declarations: [
@@ -27,9 +31,19 @@ import { HttpClientModule, HttpClient, provideHttpClient, withFetch } from '@ang
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [
+  providers: [AuthService, SpinnerService, SharedService,
     provideClientHydration(),
-    provideHttpClient(withFetch())
+    provideHttpClient(withFetch()),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptService,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

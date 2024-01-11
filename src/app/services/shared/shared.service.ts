@@ -1,12 +1,13 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
+import { environment } from '../../../environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
-  public Url = "http://localhost:5000/api/";
+  public Url = environment.url;
   constructor(public _http: HttpClient) {
     console.log("Test")
   }
