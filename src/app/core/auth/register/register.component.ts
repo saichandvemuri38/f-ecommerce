@@ -10,18 +10,18 @@ import { SharedService } from '../../../services/shared/shared.service';
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent implements OnInit {
-  constructor(public fb: FormBuilder,public _route: Router, public _auth: AuthService, public _shared: SharedService) { }
+  constructor(public fb: FormBuilder, public _route: Router, public _auth: AuthService, public _shared: SharedService) { }
   public registerData: FormGroup;
   ngOnInit(): void {
-this.registerData = this.registerForm();
+    this.registerData = this.registerForm();
   }
   registerForm() {
     return this.fb.group({
-      fname: ['', Validators.required],
-      lname: ['', Validators.required],
-      phoneNumber: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
-      dob: ['', Validators.required],
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
+      // phoneNumber: ['', Validators.required],
+      // confirmPassword: ['', Validators.required],
+      // dob: ['', Validators.required],
       email: ['', [Validators.required, Validators.email, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       password: ['', Validators.required],
       usertype: ['', Validators.required]
@@ -32,11 +32,11 @@ this.registerData = this.registerForm();
   }
   onSubmit() {
     if (this.registerData.valid) {
-      this._shared.post('register',this.registerData.value).subscribe(res => {
+      this._shared.post('auth/createUser', this.registerData.value).subscribe(res => {
         console.log(res);
         sessionStorage.setItem('token', res.token);
         sessionStorage.setItem('payload', JSON.stringify(res.payload));
-          this._route.navigate(['/list'])
+        this._route.navigate(['/list'])
       },
         (error: any) => {
           console.log(error)

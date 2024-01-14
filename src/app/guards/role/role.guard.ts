@@ -10,15 +10,16 @@ import { AuthService } from '../../services/auth/auth.service';
 export class RoleGuard implements CanActivate {
   userProfile: any;
 
-  constructor(private authService: AuthService) { }
+  constructor(private _auth: AuthService) { }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     console.log(route)
-    const payload: any = JSON.parse(sessionStorage.getItem('payload'));
+    const payload: any = this._auth.getPayload();
+    console.log(payload)
     if (!!route.data['role']) {
 
       const routeRoles = route.data['role'];
       console.log(routeRoles)
-      console.log(payload.name)
+      console.log(payload)
       if (!!payload['role']) {
         const userRoles = payload['role'];
         if (userRoles.includes(routeRoles)) {

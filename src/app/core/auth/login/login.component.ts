@@ -12,14 +12,16 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, public _route: Router, public _auth: AuthService, public _shared: SharedService) {
+  constructor(private fb: FormBuilder, public _route: Router, public _auth: AuthService, public _shared: SharedService, @Inject(PLATFORM_ID) private platformId: Object) {
+    if (isPlatformBrowser(this.platformId)) {
+      sessionStorage.clear()
+    }
 
   }
   public loginform: FormGroup | undefined;
 
   ngOnInit(): void {
     this.loginform = this.form();
-
   }
   form() {
     return this.fb.group({
@@ -33,10 +35,9 @@ export class LoginComponent implements OnInit {
   }
   onSubmit() {
     if (this.loginform.valid) {
-      this._shared.post("login", this.loginform.value).subscribe(res => {
+      this._shared.post("auth/signUp", JSON.stringify(this.loginform.value)).subscribe(res => {
         console.log(res);
         sessionStorage.setItem('token', res.token);
-        sessionStorage.setItem('payload', JSON.stringify(res.payload));
         this._route.navigate(['/list'])
       },
         (error: any) => {

@@ -4,17 +4,17 @@
     <div class=" mb-0 logo" ><img src="" alt="e-commerce" class="img-fluid"></div>
     <form [formGroup]="registerData" (ngSubmit)="onSubmit()" class="mt-2 ">
       <div class="form-group mb-2">
-        <input type="text" class="form-control" pInputText placeholder="First Name" formControlName="fname" required
-          [class.is-invalid]="registerValid['fname'].invalid && registerValid['fname'].touched">
-        <div class="" *ngIf="registerValid['fname'].errors && registerValid['fname'].touched">
-          <small class="text-danger" *ngIf="registerValid['fname'].errors['required']">First Name</small>
+        <input type="text" class="form-control" pInputText placeholder="First Name" formControlName="firstname" required
+          [class.is-invalid]="registerValid['firstname'].invalid && registerValid['firstname'].touched">
+        <div class="" *ngIf="registerValid['firstname'].errors && registerValid['firstname'].touched">
+          <small class="text-danger" *ngIf="registerValid['firstname'].errors['required']">First Name</small>
         </div>
       </div>
       <div class="form-group mb-2">
-        <input type="text" class="form-control" pInputText placeholder="Last Name" formControlName="lname" required
-          [class.is-invalid]="registerValid['lname'].invalid && registerValid['lname'].touched">
-        <div class="" *ngIf="registerValid['lname'].errors && registerValid['lname'].touched">
-          <small class="text-danger" *ngIf="registerValid['lname'].errors['required']">Last Name</small>
+        <input type="text" class="form-control" pInputText placeholder="Last Name" formControlName="lastname" required
+          [class.is-invalid]="registerValid['lastname'].invalid && registerValid['lastname'].touched">
+        <div class="" *ngIf="registerValid['lastname'].errors && registerValid['lastname'].touched">
+          <small class="text-danger" *ngIf="registerValid['lastname'].errors['required']">Last Name</small>
         </div>
       </div>
       <div class="form-group mb-2">
@@ -26,7 +26,7 @@
         </div>
       </div>
 
-      <div class="form-group mb-2">
+      <!-- <div class="form-group mb-2">
         <input type="text" class="form-control" pInputText placeholder="Phone Number" formControlName="phoneNumber" required
           [class.is-invalid]="registerValid['phoneNumber'].invalid && registerValid['phoneNumber'].touched">
         <div class="" *ngIf="registerValid['phoneNumber'].errors && registerValid['phoneNumber'].touched">
@@ -38,8 +38,8 @@
         <div class="" *ngIf="registerValid['dob'].errors && registerValid['dob'].touched">
           <small class="text-danger" *ngIf="registerValid['dob'].errors['required']">DOB</small>
         </div>
-      </div>
-      <div class="d-flex mb-2">
+      </div> -->
+      <div class=" mb-2">
         <div class="form-group">
           <input type="password" class="form-control" pInputText placeholder="Password" formControlName="password"
             [class.is-invalid]="registerValid['password'].invalid && registerValid['password'].touched">
@@ -48,13 +48,13 @@
 
           </div>
         </div>
-        <div class="form-group ms-2">
+        <!-- <div class="form-group ms-2">
           <input type="password" class="form-control" pInputText placeholder="Confirm Passsword" formControlName="confirmPassword"
             [class.is-invalid]="registerValid['confirmPassword'].invalid && registerValid['confirmPassword'].touched">
           <div class="" *ngIf="registerValid['confirmPassword'].errors && registerValid['confirmPassword'].touched">
             <small class="text-danger" *ngIf="registerValid['confirmPassword'].errors['required']">Confirm Passsword</small>
           </div>
-        </div>
+        </div> -->
 
       </div>
 

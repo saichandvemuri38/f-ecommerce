@@ -1,9 +1,9 @@
 import { isPlatformBrowser } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
-import { Route ,Router} from '@angular/router';
+import { Router } from '@angular/router';
+import * as jwt_decode from "jwt-decode";
 
-import { Observable, catchError, BehaviorSubject, combineLatest, map, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,14 @@ import { Observable, catchError, BehaviorSubject, combineLatest, map, throwError
 export class AuthService {
 
 
-  constructor(public http: HttpClient,public _route:Router,@Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(public http: HttpClient, public _route: Router, @Inject(PLATFORM_ID) private platformId: Object) {
     console.log("Test")
+  }
+  parseJwt() {
+    let sessionItem = this.getToken();
+    let payload = JSON.parse(atob(sessionItem.split('.')[1]));
+    console.log(sessionItem, payload)
+    return payload;
   }
   public loggedIn() {
     if (isPlatformBrowser(this.platformId)) {
@@ -25,13 +31,15 @@ export class AuthService {
     this._route.navigate(['/login'])
   }
   public getToken() {
-    return sessionStorage.getItem('token');
+    if (isPlatformBrowser(this.platformId)) {
+      return sessionStorage.getItem('token');
+    }
   }
   public getRole() {
-    return sessionStorage.getItem('token');
+    return this.parseJwt().role;
   }
   public getPayload() {
-    return JSON.parse(sessionStorage.getItem('payload'));
+    return this.parseJwt();
   }
 
 }
