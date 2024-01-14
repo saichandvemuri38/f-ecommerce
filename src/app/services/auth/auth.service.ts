@@ -1,5 +1,6 @@
+import { isPlatformBrowser } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Route ,Router} from '@angular/router';
 
 import { Observable, catchError, BehaviorSubject, combineLatest, map, throwError } from 'rxjs';
@@ -10,11 +11,13 @@ import { Observable, catchError, BehaviorSubject, combineLatest, map, throwError
 export class AuthService {
 
 
-  constructor(public http: HttpClient,public _route:Router) {
+  constructor(public http: HttpClient,public _route:Router,@Inject(PLATFORM_ID) private platformId: Object) {
     console.log("Test")
   }
   public loggedIn() {
-    return !!sessionStorage.getItem('token');
+    if (isPlatformBrowser(this.platformId)) {
+      return !!sessionStorage.getItem('token');
+    }
   }
   public logOut() {
     sessionStorage.removeItem('token');

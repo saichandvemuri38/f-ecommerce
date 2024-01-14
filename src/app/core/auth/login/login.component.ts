@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, InjectionToken, OnInit, PLATFORM_ID } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth/auth.service';
 import { SharedService } from '../../../services/shared/shared.service';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -10,11 +11,15 @@ import { SharedService } from '../../../services/shared/shared.service';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnInit {
-  constructor(private fb: FormBuilder, public _route: Router, public _auth: AuthService, public _shared: SharedService) { }
+
+  constructor(private fb: FormBuilder, public _route: Router, public _auth: AuthService, public _shared: SharedService) {
+
+  }
   public loginform: FormGroup | undefined;
 
   ngOnInit(): void {
     this.loginform = this.form();
+
   }
   form() {
     return this.fb.group({
@@ -22,6 +27,7 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     });
   }
+
   get loginValid() {
     return this.loginform.controls;
   }
@@ -39,3 +45,5 @@ export class LoginComponent implements OnInit {
     }
   }
 }
+
+

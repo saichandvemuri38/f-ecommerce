@@ -14,6 +14,8 @@ import { InterceptService } from './services/intercept/intercept.service';
 import { LoaderService } from './services/loader/loader.service';
 import { SharedService } from './services/shared/shared.service';
 import { SpinnerService } from './services/spinner/spinner.service';
+import { AuthGuard } from './guards/auth/auth.guard';
+import { RoleGuard } from './guards/role/role.guard';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,7 @@ import { SpinnerService } from './services/spinner/spinner.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [AuthService, SpinnerService, SharedService,
+  providers: [AuthService, SpinnerService, SharedService,AuthGuard,RoleGuard,
     provideClientHydration(),
     provideHttpClient(withFetch()),
     {
