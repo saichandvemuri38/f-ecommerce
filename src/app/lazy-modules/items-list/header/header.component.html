@@ -1,16 +1,44 @@
 <!-- <p>header works!</p> -->
 <nav class="navbar bg-white shadow-sm">
   <div class="container-fluid d-flex align-items-center justify-content-between">
-    <div class="col-4 mb-0 logo" routerLink="/user-dashboard"><h5 class="mb-0">Zomato</h5></div>
-
-    <div class="col-4 text-end">
-      <p-avatar icon="pi pi-building" styleClass="me-2 cursor-pointer" pTooltip="Library List" routerLink="user-dashboard" size="small" shape="circle"  *ngIf="payload.role == 'Student'"></p-avatar>
-      <p-avatar icon="pi pi-plus" styleClass="me-2 cursor-pointer" tooltipPosition="left" pTooltip="Add Book" routerLink="admin-dashboard" size="small" shape="circle"  *ngIf="payload.role == 'Admin'"></p-avatar>
-      <p-avatar icon="pi pi-sign-in" pTooltip="Books Transactions History" tooltipPosition="left" styleClass="me-2 cursor-pointer" routerLink="records" size="small" shape="circle"  *ngIf="payload.role == 'Student'"></p-avatar>
-      <p-avatar icon="pi pi-book" styleClass="me-2 cursor-pointer" tooltipPosition="left" pTooltip="Reserve Book List" routerLink="reserve-book" size="small" shape="circle"  *ngIf="payload.role == 'Student'"></p-avatar>
-      <p-avatar  icon="pi pi-user" styleClass="me-2 cursor-pointer" size="small" shape="circle"  (click)="menu.toggle($event)"></p-avatar>
-      <p-menu [model]="items" #menu [popup]="true"></p-menu>
+    <div class="col-4 mb-0 logo" routerLink="/list">
+      <h5 class="mb-0">Amazon</h5>
     </div>
-
+    <div class="col-8 justify-content-end d-flex align-items-center">
+      <ul class="d-flex align-items-center">
+        <li class="mx-2 header-list" routerLink="dashboard">
+          <h6 class="mb-0">Dashboard</h6>
+        </li>
+        <li class="mx-2 header-list" *ngIf="payload.role == 'ADMIN'" routerLink="analytics">
+          <h6 class="mb-0">Analytics</h6>
+        </li>
+        <li class="mx-2 header-list" *ngIf="payload.role == 'ADMIN'" routerLink="category">
+          <h6 class="mb-0">Category</h6>
+        </li>
+        <li class="mx-2 header-list" *ngIf="payload.role == 'ADMIN'" routerLink="product">
+          <h6 class="mb-0">Product</h6>
+        </li>
+        <li class="mx-2  header-list" *ngIf="payload.role == 'USER'" routerLink="cart">
+          <h6 class="mb-0">Cart</h6>
+        </li>
+        <li class="mx-2  header-list" *ngIf="payload.role == 'USER'" routerLink="orders">
+          <h6 class="mb-0">Orders</h6>
+        </li>
+        <li class="mx-2  header-list" *ngIf="payload.role == 'ADMIN'" routerLink="add-coupon">
+          <h6 class="mb-0">Post Coupon</h6>
+        </li>
+        <li class="mx-2  header-list" *ngIf="payload.role == 'ADMIN'" routerLink="coupon">
+          <h6 class="mb-0">Coupons</h6>
+        </li>
+        <li class="mx-2  header-list" *ngIf="payload.role == 'USER'" routerLink="wishlist">
+          <h6 class="mb-0">Wishlist</h6>
+        </li>
+      </ul>
+      <div class="">
+        <p-avatar icon="pi pi-user" styleClass="me-2 cursor-pointer" size="small" shape="circle"
+          (click)="menu.toggle($event)"></p-avatar>
+        <p-menu [model]="items" #menu [popup]="true" appendTo="body"></p-menu>
+      </div>
+    </div>
   </div>
 </nav>

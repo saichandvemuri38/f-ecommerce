@@ -21,9 +21,9 @@ import { ImageModule } from 'primeng/image';
 import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
 import { CalendarModule } from 'primeng/calendar';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
-
-const primeNg = [CalendarModule, DialogModule, TableModule, ImageModule, TooltipModule, InputNumberModule, FieldsetModule, AutoCompleteModule, MenuModule, AvatarModule, AvatarGroupModule, DropdownModule, InputTextModule, PasswordModule, ButtonModule, CardModule, RadioButtonModule, CheckboxModule, FileUploadModule, SidebarModule, ListboxModule, CommonModule]
+const primeNg = [InputTextareaModule,CalendarModule, DialogModule, TableModule, ImageModule, TooltipModule, InputNumberModule, FieldsetModule, AutoCompleteModule, MenuModule, AvatarModule, AvatarGroupModule, DropdownModule, InputTextModule, PasswordModule, ButtonModule, CardModule, RadioButtonModule, CheckboxModule, FileUploadModule, SidebarModule, ListboxModule, CommonModule]
 
 
 @NgModule({

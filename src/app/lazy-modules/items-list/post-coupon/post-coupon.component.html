@@ -1,0 +1,21 @@
+<div class="d-flex align-items-center justify-content-center pt-5">
+  <p-card [style]="{width: '420px',margin :'0 auto'}" styleClass="p-card-shadow">
+    <form [formGroup]="postCoupon" (ngSubmit)="onSubmit()" class=" mt-2">
+      <div class="form-group mb-2">
+        <input type="text" class="form-control" pInputText placeholder="Coupon Name" formControlName="coupon_name">
+      </div>
+      <div class="form-group mb-2">
+        <input type="text" class="form-control" pInputText placeholder="Coupon Code" formControlName="coupon_code">
+      </div>
+      <div class="form-group mb-2">
+        <input type="text" class="form-control" pInputText placeholder="Discount" formControlName="discount">
+      </div>
+      <div class="form-group">
+        <p-calendar  class="w-100 " styleClass="w-100 " placeholder="Expiry Date" formControlName="expiration_date" ></p-calendar>
+      </div>
+      <div class="sizes mt-2 text-center">
+        <p-button label="Submit" icon="pi pi-check" styleClass="p-button-sm" type="submit"></p-button>
+      </div>
+    </form>
+  </p-card>
+</div>
