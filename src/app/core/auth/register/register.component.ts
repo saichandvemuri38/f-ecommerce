@@ -19,23 +19,20 @@ export class RegisterComponent implements OnInit {
     return this.fb.group({
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
-      // phoneNumber: ['', Validators.required],
-      // confirmPassword: ['', Validators.required],
-      // dob: ['', Validators.required],
       email: ['', [Validators.required, Validators.email, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
-      password: ['', Validators.required],
-      usertype: ['', Validators.required]
+      password: ['', Validators.required]
     });
   }
   get registerValid() {
     return this.registerData.controls;
   }
   onSubmit() {
+    console.log("valid form data",this.registerData.valid)
     if (this.registerData.valid) {
+      console.log("valid")
       this._shared.post('auth/createUser', this.registerData.value).subscribe(res => {
         console.log(res);
         sessionStorage.setItem('token', res.token);
-        sessionStorage.setItem('payload', JSON.stringify(res.payload));
         this._route.navigate(['/list'])
       },
         (error: any) => {

@@ -2,8 +2,6 @@ import { isPlatformBrowser } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Router } from '@angular/router';
-import * as jwt_decode from "jwt-decode";
-
 
 @Injectable({
   providedIn: 'root'

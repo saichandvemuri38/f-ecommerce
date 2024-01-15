@@ -9,12 +9,12 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: "full" },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'list', loadChildren: () => import('./lazy-modules/items-list/items-list.module').then(m => m.ItemsListModule), canActivate: [AuthGuard, RoleGuard],data: { role: 'ADMIN' } },
+  { path: 'list', loadChildren: () => import('./lazy-modules/items-list/items-list.module').then(m => m.ItemsListModule), canActivate: [AuthGuard]},
   { path: "**", redirectTo: 'login', pathMatch: 'full' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

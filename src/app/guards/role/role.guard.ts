@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable, map } from 'rxjs';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
+
 
 
 @Injectable({
@@ -23,7 +23,6 @@ export class RoleGuard implements CanActivate {
       if (!!payload['role']) {
         const userRoles = payload['role'];
         if (userRoles.includes(routeRoles)) {
-          // user's roles contains route's role
           return true;
         } else {
           // toaster-display role user needs to have to access this route;
