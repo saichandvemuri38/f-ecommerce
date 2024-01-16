@@ -1,21 +1,54 @@
-<div class="d-flex align-items-center justify-content-center pt-5">
-  <p-card [style]="{width: '420px',margin :'0 auto'}" styleClass="p-card-shadow">
-    <form [formGroup]="postCoupon" (ngSubmit)="onSubmit()" class=" mt-2">
-      <div class="form-group mb-2">
-        <input type="text" class="form-control" pInputText placeholder="Coupon Name" formControlName="coupon_name">
-      </div>
-      <div class="form-group mb-2">
-        <input type="text" class="form-control" pInputText placeholder="Coupon Code" formControlName="coupon_code">
-      </div>
-      <div class="form-group mb-2">
-        <input type="text" class="form-control" pInputText placeholder="Discount" formControlName="discount">
-      </div>
-      <div class="form-group">
-        <p-calendar  class="w-100 " styleClass="w-100 " placeholder="Expiry Date" formControlName="expiration_date" ></p-calendar>
-      </div>
-      <div class="sizes mt-2 text-center">
-        <p-button label="Submit" icon="pi pi-check" styleClass="p-button-sm" type="submit"></p-button>
-      </div>
-    </form>
-  </p-card>
+<div class="row pt-5 m-0">
+  <div class="col-md-4 col-12">
+    <div class="d-flex align-items-center justify-content-center ">
+      <p-card [style]="{width: '420px',margin :'0 auto'}" styleClass="p-card-shadow">
+        <form [formGroup]="postCoupon" (ngSubmit)="onSubmit()" class=" mt-2">
+          <div class="form-group mb-2">
+            <input type="text" class="form-control" pInputText placeholder="Coupon Name" formControlName="coupon_name">
+          </div>
+          <div class="form-group mb-2">
+            <input type="text" class="form-control" pInputText placeholder="Coupon Code" formControlName="coupon_code">
+          </div>
+          <div class="form-group mb-2">
+            <input type="text" class="form-control" pInputText placeholder="Discount" formControlName="discount">
+          </div>
+          <div class="form-group">
+            <p-calendar class="w-100 " styleClass="w-100 " placeholder="Expiry Date"
+              formControlName="expiration_date"></p-calendar>
+          </div>
+          <div class="sizes mt-2 text-center">
+            <p-button label="Submit" icon="pi pi-check" styleClass="p-button-sm" type="submit"></p-button>
+          </div>
+        </form>
+      </p-card>
+    </div>
+  </div>
+  <div class="col-md-8 col-12">
+    <div class="">
+      <p-table [value]="products" styleClass="p-datatable-sm">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Code</th>
+            <th>Discount</th>
+            <th>Date</th>
+            <th></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+          <tr>
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.category }}</td>
+            <td class="">{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+
+            <td><span class="text-danger cursor-pointer"><i class="pi pi-trash"></i></span><span
+                class="ms-2 text-success cursor-pointer"><i class="pi pi-file-edit"></i></span></td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
 </div>

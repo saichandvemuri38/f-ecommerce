@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth/auth.service';
 import { SharedService } from '../../../services/shared/shared.service';
 import { isPlatformBrowser } from '@angular/common';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, public _route: Router, public _auth: AuthService, public _shared: SharedService, @Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(private sanitizer: DomSanitizer, private fb: FormBuilder, public _route: Router, public _auth: AuthService, public _shared: SharedService, @Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
       sessionStorage.clear()
     }
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginform = this.form();
+
   }
   form() {
     return this.fb.group({

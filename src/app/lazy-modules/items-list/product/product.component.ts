@@ -3,7 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth/auth.service';
 import { SharedService } from '../../../services/shared/shared.service';
-
+interface UploadEvent {
+  originalEvent: Event;
+  files: File[];
+}
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -20,7 +23,7 @@ export class ProductComponent implements OnInit {
   }
   form() {
     return this.fb.group({
-      product_category:[""],
+      product_category: [""],
       product_name: [''],
       price: ['', Validators.required],
       discription: ['']
@@ -41,7 +44,10 @@ export class ProductComponent implements OnInit {
       })
     // }
   }
-
+  products = [{ id: '1' }, { id: '1' }, { id: '1' }];
+  onUpload(event: UploadEvent) {
+    console.log(event)
+  }
 }
 
 

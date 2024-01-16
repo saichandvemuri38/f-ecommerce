@@ -14,6 +14,7 @@ import { AnalyticsComponent } from './analytics/analytics.component';
 const routes: Routes = [
   {
     path: '', component: ItemsListComponent, children: [
+      {path:'',redirectTo:'dashboard',pathMatch:'full'},
       { path: 'dashboard', component: DashboardComponent },
       { path: 'wish-list', component: WishlistComponent },
       { path: 'coupon', component: CouponComponent },

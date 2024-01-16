@@ -32,13 +32,14 @@ export class CategoryComponent implements OnInit {
   onSubmit() {
     console.log(this.addCategory.value)
     // if (this.addCategory.valid) {
-      this._shared.post("addCategorys", JSON.stringify(this.addCategory.value)).subscribe(res => {
-        console.log(res);
-      },
-        (error: any) => {
-          console.log(error)
-        })
+    this._shared.post("addCategorys", JSON.stringify(this.addCategory.value)).subscribe(res => {
+      console.log(res);
+    },
+      (error: any) => {
+        console.log(error)
+      })
     // }
   }
+  products = [{ id: '1' }, { id: '1' }, { id: '1' }];
 
 }

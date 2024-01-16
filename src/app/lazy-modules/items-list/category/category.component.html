@@ -1,15 +1,44 @@
-<div class="d-flex align-items-center justify-content-center pt-5">
-  <p-card [style]="{width: '420px',margin :'0 auto'}" styleClass="p-card-shadow">
-    <form [formGroup]="addCategory" (ngSubmit)="onSubmit()" class=" mt-2">
-      <div class="form-group mb-2">
-        <input type="text" class="form-control" pInputText placeholder="Add Category Type" formControlName="categoryType">
-      </div>
-      <div class="form-group">
-          <textarea rows="5" cols="37" placeholder="Add Description" pInputTextarea formControlName="description" ></textarea>
-      </div>
-      <div class="sizes  text-center mt-2">
-        <p-button label="Submit" icon="pi pi-check" styleClass="p-button-sm" type="submit"></p-button>
-      </div>
-    </form>
-  </p-card>
+<div class="row pt-5 m-0">
+  <div class="col-6">
+    <div class="d-flex align-items-center justify-content-center ">
+      <p-card [style]="{width: '420px',margin :'0 auto'}" styleClass="p-card-shadow">
+        <form [formGroup]="addCategory" (ngSubmit)="onSubmit()" class=" mt-2">
+          <div class="form-group mb-2">
+            <input type="text" class="form-control" pInputText placeholder="Add Category Type"
+              formControlName="categoryType">
+          </div>
+          <div class="form-group">
+            <textarea rows="5" cols="37" placeholder="Add Description" pInputTextarea
+              formControlName="description"></textarea>
+          </div>
+          <div class="sizes  text-center mt-2">
+            <p-button label="Submit" icon="pi pi-check" styleClass="p-button-sm" type="submit"></p-button>
+          </div>
+        </form>
+      </p-card>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="">
+      <p-table [value]="products" styleClass="p-datatable-sm">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+          <tr>
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.category }}</td>
+            <td><span class="text-danger cursor-pointer"><i class="pi pi-trash"></i></span><span
+                class="ms-2 text-success cursor-pointer"><i class="pi pi-file-edit"></i></span></td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
 </div>

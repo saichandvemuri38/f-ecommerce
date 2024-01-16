@@ -22,8 +22,8 @@ export class PostCouponComponent implements OnInit {
     return this.fb.group({
       coupon_name: [''],
       coupon_code: ['', Validators.required],
-      discount:[''],
-      expiration_date:['']
+      discount: [''],
+      expiration_date: ['']
     });
   }
 
@@ -33,14 +33,15 @@ export class PostCouponComponent implements OnInit {
   onSubmit() {
     console.log(this.postCoupon.value)
     // if (this.postCoupon.valid) {
-      this._shared.post("postCoupons", JSON.stringify(this.postCoupon.value)).subscribe(res => {
-        console.log(res);
-      },
-        (error: any) => {
-          console.log(error)
-        })
+    this._shared.post("postCoupons", JSON.stringify(this.postCoupon.value)).subscribe(res => {
+      console.log(res);
+    },
+      (error: any) => {
+        console.log(error)
+      })
     // }
   }
+  products = [{ id: '1' }, { id: '1' }, { id: '1' }];
 
 }
 

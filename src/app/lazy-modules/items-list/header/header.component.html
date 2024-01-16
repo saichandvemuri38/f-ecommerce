@@ -1,8 +1,8 @@
 <!-- <p>header works!</p> -->
 <nav class="navbar bg-white shadow-sm">
   <div class="container-fluid d-flex align-items-center justify-content-between">
-    <div class="col-4 mb-0 logo" routerLink="/list">
-      <h5 class="mb-0">Amazon</h5>
+    <div class="col-4 mb-0 logo" routerLink="/list" >
+      <img src="/assets/images/ecommerce.png" class="img-fluid h-100">
     </div>
     <div class="col-8 justify-content-end d-flex align-items-center">
       <ul class="d-flex align-items-center">
@@ -27,9 +27,9 @@
         <li class="mx-2  header-list" *ngIf="payload.role == 'ADMIN'" routerLink="add-coupon">
           <h6 class="mb-0">Post Coupon</h6>
         </li>
-        <li class="mx-2  header-list" *ngIf="payload.role == 'ADMIN'" routerLink="coupon">
+        <!-- <li class="mx-2  header-list" *ngIf="payload.role == 'ADMIN'" routerLink="coupon">
           <h6 class="mb-0">Coupons</h6>
-        </li>
+        </li> -->
         <li class="mx-2  header-list" *ngIf="payload.role == 'USER'" routerLink="wishlist">
           <h6 class="mb-0">Wishlist</h6>
         </li>
