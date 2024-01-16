@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
     console.log("valid form data",this.registerData.valid)
     if (this.registerData.valid) {
       console.log("valid")
-      this._shared.post('auth/createUser', this.registerData.value).subscribe(res => {
+      this._shared.post('v1/auth/createUser', this.registerData.value).subscribe(res => {
         console.log(res);
         sessionStorage.setItem('token', res.token);
         this._route.navigate(['/list'])

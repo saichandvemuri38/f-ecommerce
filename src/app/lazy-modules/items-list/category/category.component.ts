@@ -32,7 +32,7 @@ export class CategoryComponent implements OnInit {
   onSubmit() {
     console.log(this.addCategory.value)
     // if (this.addCategory.valid) {
-    this._shared.post("addCategorys", JSON.stringify(this.addCategory.value)).subscribe(res => {
+    this._shared.post("admin/category", JSON.stringify(this.addCategory.value)).subscribe(res => {
       console.log(res);
     },
       (error: any) => {

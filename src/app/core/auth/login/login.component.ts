@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
   }
   onSubmit() {
     if (this.loginform.valid) {
-      this._shared.post("auth/signUp", JSON.stringify(this.loginform.value)).subscribe(res => {
+      this._shared.post("v1/auth/signUp", JSON.stringify(this.loginform.value)).subscribe(res => {
         console.log(res);
         sessionStorage.setItem('token', res.token);
         this._route.navigate(['/list'])
