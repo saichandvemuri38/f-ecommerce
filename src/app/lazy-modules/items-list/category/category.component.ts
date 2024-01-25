@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrl: './category.component.scss'
 })
 export class CategoryComponent implements OnInit {
-  public products;
+  public categoryList;
   constructor(private fb: FormBuilder, public _route: Router, public _auth: AuthService, public _shared: SharedService) {
   }
   public addCategory: FormGroup | undefined;
@@ -46,10 +46,7 @@ export class CategoryComponent implements OnInit {
         })
     }
   }
-
   getCategories(){
-    this._shared.get('admin/getCategory').subscribe(res=>this.products = res);
+    this._shared.get('admin/getCategory').subscribe(res=>this.categoryList = res);
   }
-
-
 }
