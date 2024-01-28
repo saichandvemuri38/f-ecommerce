@@ -30,8 +30,7 @@ import { RoleGuard } from './guards/role/role.guard';
     PrimeNgModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule
+    ReactiveFormsModule
   ],
   providers: [AuthService, SpinnerService, SharedService,AuthGuard,RoleGuard,
     provideClientHydration(),

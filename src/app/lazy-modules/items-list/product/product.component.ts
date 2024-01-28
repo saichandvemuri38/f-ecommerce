@@ -37,7 +37,7 @@ export class ProductComponent implements OnInit {
   onSubmit() {
 
     this.addProduct.addControl('admin',new FormControl(this._auth.getPayload().username));
-    this.addProduct.addControl('img',new FormControl(this.imageFile));
+    this.addProduct.addControl('img',new FormControl(this.imageFile.byteImg));
     console.log(this.addProduct.value)
     if (this.addProduct.valid) {
     this._shared.post("admin/product/addProduct", this.addProduct.value).subscribe(res => {
@@ -57,7 +57,7 @@ export class ProductComponent implements OnInit {
         reader.onload = (_event: any) => {
           console.log(_event);
             this.imageFile = {
-                link: _event.target.result,
+              byteImg: _event.target.result,
                 file: event.target.files[0],
                 name: event.srcElement.files[0].name
             };
